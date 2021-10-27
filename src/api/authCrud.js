@@ -12,7 +12,7 @@ export const login = (email, password) => {
       localStorage.setItem("userTasks", user);
       return resp.data;
     })
-    .catch((err) => console.log(err));
+    .catch((err) => err);
 };
 
 export const signUp = (name, email, password) => {
@@ -22,5 +22,5 @@ export const signUp = (name, email, password) => {
       console.log(resp.data);
       return resp.data;
     })
-    .catch((err) => console.log(err));
+    .catch((err) => err);
 };

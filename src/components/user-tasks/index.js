@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import Modal from "../common/Modal";
+import { getUser as getAuthUser } from "../../utils/loggedInUser";
 import { getUser } from "../../api/userCrud";
 import { editTask, deleteTask, createTask } from "../../api/taskCrud";
 import LoadingPage from "../common/LoadingPage";
@@ -29,7 +30,16 @@ const UserTasks = (props) => {
   };
 
   useEffect(() => {
-    getUser(userId, setUser);
+    let isSubcribed = true;
+    let auth = getAuthUser();
+    if (auth) {
+      getUser(userId).then((user) => {
+        if (isSubcribed) {
+          setUser(user.user);
+        }
+      });
+    }
+    return () => (isSubcribed = false);
   }, [userId]);
   if (!user.tasks) {
     return <LoadingPage />;

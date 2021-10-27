@@ -20,19 +20,21 @@ const App = () => {
   return (
     <BrowserRouter basename="">
       {isAuthorized && <Header user={user} />}
+
       <Switch>
         {!isAuthorized ? (
           <>
             <Route path="/auth/login" exact component={Login} />
-
             <Route path="/auth/signup" exact component={SignUp} />
-
             <Redirect to="/auth/login" />
           </>
         ) : (
-          <Redirect
-            to={`${user.role !== "basic" ? "/" : "/user-tasks/" + user.id}`}
-          />
+          <>
+            <Redirect
+              from="/auth/login"
+              to={`${user.role !== "basic" ? "/" : "/user-tasks/" + user.id}`}
+            />
+          </>
         )}
       </Switch>
 

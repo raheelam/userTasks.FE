@@ -42,6 +42,7 @@ const TaskList = ({
               .map((task, index) => {
                 return (
                   <TaskListItem
+                    key={task._id}
                     task={task}
                     toggleDone={toggleDone}
                     toggleModal={toggleModal}

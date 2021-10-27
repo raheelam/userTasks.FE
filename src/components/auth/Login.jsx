@@ -7,49 +7,68 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState(null);
   return (
     <>
       <div className="w-full h-screen flex items-center justify-center">
-        <form
-          className="p-10 w-1/2 md:w-1/3 bg-gray-100 m-auto text-center"
-          onSubmit={async (e) => {
-            e.preventDefault();
-            setIsSubmitting(true);
-            await login(email, password);
-            window.location.reload();
-          }}
-        >
-          <h2>Login</h2>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            name="email"
-            required
-            placeholder={`Email`}
-            className="m-3 bg-gray-100 p-4 w-full  border-2  shadow-md focus:outline-none focus:border-gray-300"
+        <div className="w-4/5 md:w-1/2 lg:w-1/3 bg-gray-100 m-auto text-center">
+          <img
+            alt="bunny studio logo"
+            className="w-1/2 py-3 pl-10"
+            src="/images/bunny-studio.png"
           />
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            name="password"
-            required
-            placeholder={`Password`}
-            className="m-3 bg-gray-100 p-4 w-full  border-2  shadow-md focus:outline-none focus:border-gray-300"
-          />
-
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className={`m-3 bg-yellow-500 w-full py-2 mb-10 text-center text-white mt-3 md:text-lg hover:bg-orange-600`}
+          <hr></hr>
+          <form
+            className="p-10 pt-3 "
+            onSubmit={async (e) => {
+              e.preventDefault();
+              setIsSubmitting(true);
+              let res = await login(email, password);
+              if (res.isAxiosError) {
+                setIsSubmitting(false);
+                setError(res.response.data.message);
+                return;
+              }
+              window.location.reload();
+            }}
           >
-            Login
-          </button>
-          <div>
-            dont have an account? <Link to="/auth/signup">sign up</Link>
-          </div>
-        </form>
+            {error !== null && (
+              <div className="bg-red-300  text-center p-5 mb-5 rounded">
+                {error}
+              </div>
+            )}
+
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              name="email"
+              required
+              placeholder={`Email`}
+              className="mb-3 bg-gray-100 p-4 w-full  border-2  shadow-md focus:outline-none focus:border-gray-300"
+            />
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              name="password"
+              required
+              placeholder={`Password`}
+              className="mb-3 bg-gray-100 p-4 w-full  border-2  shadow-md focus:outline-none focus:border-gray-300"
+            />
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className={`my-3 bg-yellow-500 w-full py-2 mb-10 text-center text-white mt-3 md:text-lg hover:bg-orange-600`}
+            >
+              Login
+            </button>
+            <div>
+              Dont have an account? <Link to="/auth/signup">sign up</Link>
+            </div>
+          </form>
+        </div>
       </div>
     </>
   );

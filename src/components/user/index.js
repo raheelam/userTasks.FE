@@ -6,6 +6,7 @@ import {
   editUser,
   deleteUser,
 } from "../../api/userCrud";
+import { getUser } from "../../utils/loggedInUser";
 import { toggleModal } from "../../utils/toggleModal";
 import LoadingPage from "../common/LoadingPage";
 import Modal from "../common/Modal";
@@ -48,6 +49,7 @@ function UserPage() {
     let data = await getAllUsers(pageNo);
     if (data && data.users) {
       const remainder = data.totalItems % 5;
+
       setPages && setUsers(data.users);
       setPages(data.totalItems / 5 + (remainder === 0 ? 0 : 1));
     }
@@ -73,7 +75,10 @@ function UserPage() {
   };
 
   useEffect(() => {
-    getUsers(1);
+    let auth = getUser();
+    if (auth && auth.role === "admin") {
+      getUsers(1);
+    }
   }, []);
 
   if (!users) {

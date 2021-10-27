@@ -21,11 +21,11 @@ export const deleteUser = (userId, setUsers, users) => {
     .catch((err) => console.log(err));
 };
 
-export const getUser = (userId, setUser) => {
+export const getUser = (userId) => {
   return userTask
     .get(`user/${userId}`)
     .then((resp) => {
-      setUser(resp.data.user);
+      return resp.data;
     })
     .catch((err) => console.log(err));
 };
