@@ -36,8 +36,7 @@ https://bunny-studio-uts.netlify.app/
   Email: raheelamoha@example.com
   Password: qwerty
 - Users can view and update the status of their tasks.
-- 404 Page Incase User gets lost.
-- Ensure User can't access login and homepage when they are already loggedin
+- Ensure User can't access login when they are already loggedin
 - Ensure User can't access authenticated pages e.g users, tasks.
 - Using endpoints from https://bunny-user-tasks.herokuapp.com/
 
