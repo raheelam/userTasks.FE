@@ -14,7 +14,7 @@ const TaskList = ({
   }
 
   return (
-    <div className="md:w-1/2 pb-2  mb-8 mr-2 overflow-hidden rounded-lg shadow-lg">
+    <div className=" md:w-1/2 pb-2  mb-16 mr-2 overflow-hidden rounded-lg shadow-lg">
       <div
         className={` px-4 py-3 flex items-center text-md font-semibold  tracking-wide text-left text-gray-900 bg-${topColor}-400 uppercase border-b border-gray-600`}
       >
@@ -28,6 +28,7 @@ const TaskList = ({
         </span>
       </div>
       <div
+        className="task-list"
         style={{
           minHeight: "50vh",
           maxHeight: "50vh",
@@ -49,7 +50,8 @@ const TaskList = ({
                     setSelectedTask={setSelectedTask}
                   />
                 );
-              })}
+              })
+              .reverse()}
           </ul>
         </div>
       </div>

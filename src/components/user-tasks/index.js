@@ -13,6 +13,7 @@ const UserTasks = (props) => {
   const [user, setUser] = useState({});
   const [selectedTask, setSelectedTask] = useState(null);
   const [disabled, setDisabled] = useState(false);
+  const [showScrollIcon, setShowScrollIcon] = useState(true);
   const { userId } = props.match.params;
 
   const toggleDone = async (task) => {
@@ -28,6 +29,23 @@ const UserTasks = (props) => {
       tasks: user.tasks.map((t) => (t._id === data.task._id ? data.task : t)),
     }));
   };
+
+  const handleScroll = () => {
+    const bottom =
+      window.innerHeight + window.scrollY >= document.body.offsetHeight;
+    if (bottom) {
+      setShowScrollIcon(false);
+    } else {
+      setShowScrollIcon(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, true);
+    return () => {
+      window.removeEventListener("scroll", handleScroll, true);
+    };
+  }, []);
 
   useEffect(() => {
     let isSubcribed = true;
@@ -45,7 +63,7 @@ const UserTasks = (props) => {
     return <LoadingPage />;
   }
   return (
-    <section className="container  mx-auto p-6 font-mono">
+    <section className="container   mx-auto p-6 font-mono">
       <section className="container flex justify-between  w-25 p-3 mb-5 rounded bg-yellow-500 ">
         <div>
           <h2>User Information:</h2>
@@ -162,11 +180,19 @@ const UserTasks = (props) => {
         </Modal>
       </>
       <div
-        className="plus rounded-full bg-green-400  hover:bg-green-500  text-left  w-16 h-16 ml-auto    flex items-center cursor-pointer shadow-lg"
+        className="plus fixed  bottom-8 right-6 rounded-full bg-green-400  hover:bg-green-500  text-left  w-16 h-16 ml-auto    flex items-center cursor-pointer shadow-lg"
         onClick={() => toggleModal("addTask")}
       >
         <p className="font-bold text-2xl text-white m-auto">+</p>
       </div>
+      <span
+        className={
+          (showScrollIcon ? "" : "invisible ") +
+          "material-icons-outlined fixed md:invisible bottom-5 left-0 text-yellow-500 animate-bounce w-6 h-6 "
+        }
+      >
+        arrow_downward
+      </span>
     </section>
   );
 };

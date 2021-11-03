@@ -26,13 +26,13 @@ https://bunny-studio-uts.netlify.app/
 - Admin can login using the below credential:
   Email: admin@example.com
   Password: qwerty
-- Admin can add users.
 - Admin can see the list of users.
 - Admin can update user details.
 - Admin can delete users.
 - Admin can add tasks for users.
 - Admin can update user tasks.
-- User can sign up with their email and password. Every user is given a basic role by default:
+- User can sign up with their email and password. Every user is given a basic role by default.
+  you can signup as a basic user or login as a basic user with:
   Email: raheelamoha@example.com
   Password: qwerty
 - Users can view and update the status of their tasks.

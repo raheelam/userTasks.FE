@@ -5,7 +5,7 @@ const TaskListItem = ({ task, setSelectedTask, toggleModal, toggleDone }) => {
     return <LoadingPage />;
   }
   return (
-    <li className="text-gray-700 mb-3">
+    <li className="text-gray-700 mb-3 p-3">
       <div className="px-4 w-100 py-3 border">
         <div className="flex  items-center text-sm">
           <div>

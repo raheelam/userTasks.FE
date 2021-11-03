@@ -1,12 +1,10 @@
 body {
+  height: auto;
+  overflow: scroll;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
 code {
@@ -14,6 +12,24 @@ code {
     monospace;
 }
 
-::-webkit-scrollbar {
-  display: none;
+.task-list::-webkit-scrollbar {
+  display: block;
+}
+.task-list::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+.task-list::-webkit-scrollbar-track {
+  background: white;
+}
+
+/* Handle */
+.task-list::-webkit-scrollbar-thumb {
+  background: rgb(224, 223, 220);
+}
+
+/* Handle on hover */
+.task-list::-webkit-scrollbar-thumb:hover {
+  background: rgb(224, 223, 220);
 }

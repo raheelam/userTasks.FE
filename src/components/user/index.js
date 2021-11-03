@@ -14,15 +14,6 @@ function UserPage() {
   const [selectedUser, setSelectedUser] = useState(null);
   const [pages, setPages] = useState(null);
 
-  //THE ADD USER WAS BEFORE THE SIGN UP PAGE NOW A USER CAN JUST SIGNUP AND THE ADMIN WILL BE ABLE TO SEE THEM IN THE USERS VIEW
-  // const handleAddUser = async (value) => {
-  //   let data = await createUser(value);
-  //   setUsers((u) => [
-  //     ...u,
-  //     { _id: data.userId, name: value, state: false, tasks: [] },
-  //   ]);
-  //   toggleModal("addUser");
-  // };
   const handleEditUser = async (value) => {
     if (selectedUser.name !== value) {
       let data = await editUser(value, selectedUser._id);
@@ -115,9 +106,6 @@ function UserPage() {
       </div>
 
       <>
-        {/* <Modal toggleModal={toggleModal} modalId="addUser" title="Add">
-          <UserInputForm handleSubmit={handleAddUser} />
-        </Modal> */}
         <Modal toggleModal={toggleModal} modalId="editUser" title="Edit User">
           {selectedUser && (
             <UserInputForm
@@ -162,13 +150,6 @@ function UserPage() {
           )}
         </Modal>
       </>
-
-      {/* <div
-        className="plus rounded-full bg-green-400  hover:bg-green-500   w-16 h-16 ml-auto     flex items-center cursor-pointer shadow-lg"
-        onClick={() => toggleModal("addUser")}
-      >
-        <p className="font-bold text-2xl text-white m-auto">+</p>
-      </div> */}
     </section>
   );
 }
