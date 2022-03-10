@@ -12,11 +12,7 @@ function SignUp() {
   return (
     <div className="w-full h-screen flex items-center justify-center">
       <div className="w-4/5 md:w-1/2 lg:w-1/3 bg-gray-100 m-auto py-4 text-center">
-        <img
-          alt="bunny studio logo"
-          className="w-1/2 py-3   pl-10"
-          src="/images/bunny-studio.png"
-        />
+        <h1>UTS</h1>
         <hr className="mt-2"></hr>
         <form
           className="p-10 pt-10"

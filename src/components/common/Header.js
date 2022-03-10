@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 const Header = ({ user }) => {
   return (
     <div className="flex bg-gray-100 items-center p-5  mb-3 justify-between">
-      <h1>UTS</h1>
+      {(user && user.role !== "basic" && (
+        <Link to="/" className="text-black hover:text-black">
+          <h1>UTS</h1>
+        </Link>
+      )) || <h1 className="cursor-pointer">UTS</h1>}
       {user && user.role !== "basic" && (
         <Link title="home" className="ml-auto mr-3" to="/">
           <div
