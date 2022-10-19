@@ -2,7 +2,7 @@
 
 ## Hosted Application
 
-https://bunny-studio-uts.netlify.app/
+https://ut-system.netlify.app/
 
 ## Technologies Used
 
