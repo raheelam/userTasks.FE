@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const prod = 'https://user-task-tp4k.onrender.com/api/tasks';
+const prod = 'https://user-task-tp4k.onrender.com/api';
 //"https://bunny-user-tasks.herokuapp.com/api/";
 
 export default axios.create({
